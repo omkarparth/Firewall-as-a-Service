@@ -1,0 +1,27 @@
+The adjacency matrix (~/scripts/connectivitymat.txt):
+1. A 2-D matrix with rows and column corresponding to the containers in the topology.
+2. Entry '1' in the ith column and jth row represents a link between port ethi of 
+   the row container and port ethj of the column container.
+   Example:
+      L1 L2 SP1 SP2
+   L1  0  0  1  1     -- eth1
+   L2  0  0  1  1     -- eth2
+   SP1 1  1  0  0     -- eth3          ## Link between eth3 of L1 and eth1 of SP1
+   SP2 1  1  0  0     -- eth4
+       |
+       eth1
+       
+IP allocation to the links:
+
+1. The connectivity_script.py goes only through the adjacency matrix elements above the matrix diagonal one by one    creating link if it finds '1' as the current element.
+2. The IP addresses to the links are allocated to the links in from 192.168.x.0/24 subnets, where x order of occurance of the link in the matrix.
+3. 
+Example:
+      L1 L2 SP1 SP2
+   L1  0  0  1  1     -- eth1
+   L2  0  0  1  1     -- eth2
+   SP1 1  1  0  0     -- eth3         
+   SP2 1  1  0  0     -- eth4
+       |
+       eth1 
+Here, the connectivity_script.py comes across links L1- SP1, L1-SP2, L2-SP1 and L2-SP2. The links would get IPs from subnets 182.168.1.0/24, 192.168.2.0/24, 192.168.3.0/24 and 192.168.4.0/24

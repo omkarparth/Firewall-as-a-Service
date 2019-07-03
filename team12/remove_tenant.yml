@@ -1,0 +1,17 @@
+- hosts: localhost
+  gather_facts: no
+  remote_user: ubuntu
+  become: yes
+  #become_method: sudo
+  tasks:
+
+  - name: Remove all the containers
+    shell: sudo docker rm -f $(docker ps -a -q)
+    ignore_errors: yes
+    become: yes
+  
+  - name: Remove all the ssh keys
+    shell: mkdir -p /home/$(echo $USER)/.ssh
+    shell: rm -f /home/$(echo $USER)/.ssh/known_hosts 
+    ignore_errors: yes
+      

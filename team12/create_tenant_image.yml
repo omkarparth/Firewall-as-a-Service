@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  gather_facts: no
+
+  tasks:
+  - name: Make sure ubuntu image exists
+    docker_image:
+      name: ubuntu
+      state: present 
+  
+  - name: Build an image using dockerfile
+    docker_image:
+      path: "{{playbook_dir}}"
+      name: tenant_image
+      state: present 

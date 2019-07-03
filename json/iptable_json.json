@@ -1,0 +1,15 @@
+{
+    "publicRules": [
+        { "table":"filter","chainToAdd":"INPUT","lineNumberToAdd":"1","protocol":"","source":"192.168.122.1","destination":"","target":"","sourcePort":"","destinationPort":"","action":"DROP" },
+        { "table":"filter","chainToAdd":"INPUT","lineNumberToAdd":"1","protocol":"tcp","source":"","destination":"","target":"","sourcePort":"","destinationPort":"","action":"ACCEPT" }
+    ],
+    "privateRules": [
+        { "networkName":"R1","table":"filter","chainToAdd":"INPUT","lineNumberToAdd":"1","protocol":"","source":"192.168.122.1","destination":"","target":"","sourcePort":"","destinationPort":"","action":"DROP" },
+        { "networkName":"R2","table":"filter","chainToAdd":"INPUT","lineNumberToAdd":"1","protocol":"tcp","source":"","destination":"","target":"","sourcePort":"","destinationPort":"","action":"ACCEPT" }
+    ],
+    "containerRules": [
+        { "containerName":"R1","table":"filter","chainToAdd":"INPUT","lineNumberToAdd":"1","protocol":"","source":"192.168.122.1","destination":"","target":"","sourcePort":"","destinationPort":"","action":"DROP" },
+        { "containerName":"R2","table":"filter","chainToAdd":"INPUT","lineNumberToAdd":"1","protocol":"tcp","source":"","destination":"","target":"","sourcePort":"","destinationPort":"","action":"ACCEPT" }
+    ]
+}
+

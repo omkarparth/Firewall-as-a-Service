@@ -1,0 +1,33 @@
+- hosts: localhost
+  gather_facts: no
+  remote_user: ubuntu
+  become: yes
+  #become_method: sudo
+  tasks:
+
+##
+##Create Topology
+  - name: run set_vars_file.py
+    script: "{{playbook_dir}}/scripts/set_vars_file.py"
+   
+
+  - name: read the vars_file
+    include_vars:
+      file: "{{playbook_dir}}/scripts/vars_file.yaml"
+      name: names
+   
+  - name: spawn the containers 
+    docker_container:
+      image: tenant_image
+      name: "{{item}}"
+      state: started
+      hostname: "{{item}}"
+      privileged: yes
+      interactive: yes
+      tty: yes  
+    with_items: 
+      - "{{names.container_names}}"
+
+
+
+
