@@ -10,3 +10,4 @@ Automated deployment of firewall policies on the desired location (gateways/netw
 
 Extensive usage of Docker containers, Python, Ansible, Bash, libvirt-apis, Iptables, VxLAN, GRE, QEMU, KVM, and other Overlay & Virtualization technologies.
 
+Please refer https://github.com/omkarparth/Firewall-as-a-Service/blob/master/Firewall_as_a_Service__Report.pdf for a report of the project explaining the architecture, solution, and features of the end product.
